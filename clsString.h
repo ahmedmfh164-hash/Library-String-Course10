@@ -1,19 +1,13 @@
 #pragma once
-
 #include<iostream>
 #include<vector>
-
 using namespace std;
 
 class clsString
 {
-
 private:
-
 	string _Value;
-
 public:
-
 	clsString()
 	{
 		_Value = "";
@@ -33,7 +27,6 @@ public:
 	{
 		return _Value;
 	}
-
 	__declspec(property(put = SetValue, get = GetValue))string Value;
 
 	static short Length(string S1)
@@ -71,7 +64,6 @@ public:
 		}
 
 		return Counter;
-
 	}
 
 	short CountWords()
@@ -81,7 +73,6 @@ public:
 
 	static string UpperFirstOfEachWord(string S1)
 	{
-
 		bool isFirstLetter = true;
 
 		for(int i=0;i<S1.length();i++)
@@ -92,11 +83,8 @@ public:
 			}
 
 			isFirstLetter = (S1[i] == ' ' ? true : false);
-
 		}
-
 		return S1;
-
 	}
 
 	void UpperFirstOfEachWord()
@@ -107,7 +95,6 @@ public:
 
 	static string LowerFirstLetterOfEachWord(string S1)
 	{
-
 		bool  isFirstLetter = true;
 
 		for (int i = 0;i < S1.length();i++) 
@@ -118,19 +105,14 @@ public:
 			}
 
 			isFirstLetter = (S1[i] == ' ' ? true : false);
-
 		}
-
 		return S1;
-
 	}
 
 	void LowerFirstLetterOfEachWord()
 	{
-
 		//no need to return value,this function will directly update the object value
 		_Value = LowerFirstLetterOfEachWord(_Value);
-
 	}
 
 	static string UpperAllString(string S1)
@@ -140,7 +122,6 @@ public:
 			S1[i] = toupper(S1[i]);
 		}
 		return S1;
-
 	}
 
 	void UpperAllString()
@@ -179,7 +160,6 @@ public:
 	void InvertAllLettersCase()
 	{
 		_Value = InvertAllLettersCase(_Value);
-
     }
 
 	enum enWhatToCount { SmallLetter = 0,CapitalLetter=1,All=3 };
@@ -199,15 +179,12 @@ public:
 				Counter++;
 			if (WhatToCount == enWhatToCount::SmallLetter && islower(S1[i]))
 				Counter++;
-
 		}
 		return Counter;
-
 	}
 
 	static short CounterCapitalLetters(string S1)
 	{
-
 		short Counter = 0;
 
 		for (int i = 0;i < S1.length();i++)
@@ -216,7 +193,6 @@ public:
 				Counter++;
 		}
 		return Counter;
-
 	}
 
 	short CountCapitalLetters()
@@ -233,7 +209,6 @@ public:
 			Counter++;
 		}
 		return Counter;
-
 	}
 
 	short CountSmallLetters()
@@ -257,11 +232,9 @@ public:
 				if (tolower(S1[i]) == tolower(Letter))
 					Counter++;
 			}
-
 		}
 
 		return Counter;
-
 	}
 
 	short CountSpecificLetter(char Letter, bool MatchCase = true)
@@ -285,9 +258,7 @@ public:
 			if (IsVowel(S1[i]))
 				Counter++;
 		}
-
 		return Counter;
-
 	}
 
 	short CountVowels()
@@ -297,7 +268,6 @@ public:
 
 	static vector<string>Split(string S1,string Delim)
 	{
-
 		vector<string>vString;
 
 		int pos = 0;
@@ -320,9 +290,7 @@ public:
 		{
 			vString.push_back(S1);//it adds last word of the string.
 		}
-
 		return vString;
-
 	}
 
 	vector<string>Split(string Delim)
@@ -332,7 +300,6 @@ public:
 
 	static string TrimLeft(string S1)
 	{
-
 		for (int i = 0;i < S1.length();i++)
 		{
 			if (S1[i] != ' ')
@@ -350,7 +317,6 @@ public:
 
 	static string TrimRight(string S1)
 	{
-
 		for (int i = S1.length() - 1;i >= 0;i--)
 		{
 			if (S1[i] != ' ')
@@ -374,14 +340,11 @@ public:
 
 	void Trim()
 	{
-
 		_Value= Trim(_Value);
-
     }
 
 	static string JoinString(vector<string>vString, string Delim)
 	{
-
 		string S1 = "";
 
 		for (string& s : vString)
@@ -389,26 +352,21 @@ public:
 			S1 = S1 + s + Delim;
 		}
 		return S1.substr(0, S1.length() - Delim.length());
-
 	}
 
 	static string JoinString(string arrString[], short Lenght, string Delim)
 	{
-
 		string S1 = "";
 
 		for (int i = 0;i < Lenght;i++)
 		{
 			S1 = S1 + arrString[i] + Delim;
 		}
-
 		return S1.substr(0, S1.length() - Delim.length());
-	
 	}
 
 	static string ReverseWordsInString(string S1)
 	{
-
 		vector<string>vString;
 		string S2 = "";
 
@@ -426,80 +384,59 @@ public:
 		S2 = S2.substr(0, S2.length() - 1);//remove last space
 
 		return S2;
-
     }
 
 	void ReverseWordInString()
 	{
-
 		_Value = ReverseWordsInString(_Value);
-	
 	}
 
 	static string ReplaceWord(string S1, string StringToReplace, string sReplaceTo, bool MatchCase = true)
 	{
-
 		vector<string>vString = Split(S1, " ");
 
 		for (string& s : vString)
 		{
-
 			if (MatchCase)
 			{
-
 				if(s==StringToReplace)
 				{
 					s = sReplaceTo;
 				}
-
 			}
 			else
 			{
-
 				if (LowerAllString(s) == LowerAllString(StringToReplace))
 				{
 					s = sReplaceTo;
 				}
-
 			}
-
 		}
-
 		return JoinString(vString, " ");
-
 	}
 
 	string ReplaceWord(string StringToReplace, string sReplaceTo)
 	{
-
 		return ReplaceWord(_Value, StringToReplace, sReplaceTo);
-   
 	}
 
 	static string RemovePunctuation(string S1)
 	{
-
 		string S2 = "";
 
 		for(int i=0;i<S1.length();i++)
 		{
-
 			if (!ispunct(S1[i]))
 			{
 				S2 += S1[i];
 			}
-
 		}
-
 		return S2;
-
 	}
 
 	void RemovePunctuation()
 	{
-
 		_Value = RemovePunctuation(_Value);
-	
 	}
 
 
