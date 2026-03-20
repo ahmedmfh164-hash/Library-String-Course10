@@ -1,15 +1,10 @@
-
 #include <iostream>
 #include"clsString.h";
-
 using namespace std;
 
-
 int main()
-{
-    
+{ 
     clsString String1;
-
 
     clsString String2("Ahmed");
 
@@ -162,9 +157,7 @@ int main()
     cout << "\nRemove Punctuations : "<< String3.Value<< endl;
 
 
-
     system("pause>0");
     return 0;
-
 
 }
